@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Algthm / Source Discovery</title>
+        
+        <meta name="description" content="Algthm allows developer to find the best possible open source libraries for their projects.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="_/css/normalize.css" media="all" rel="stylesheet" type="text/css">
+		<link href="_/css/application.css" media="all" rel="stylesheet" type="text/css">
+		<link href="_/css/main.css" media="all" rel="stylesheet" type="text/css">
+
+		<link rel="shortcut icon" href="/favicon.ico?v=3" />
+	</head>
+    
+	<body>
+
+	    <div id="window">
+
+	    </div>
+
+	</body>
+
+	<!-- Templates -->
+	<script type="text/template" id="search-tpl">
+	<div id="search" class="toggling-view">
+	    <div id="header-container">
+	        <div class="container-v-center-40">
+	            <div id="algthm-header">
+	                <a href="/" id="logo"><img src="_/img/algthm-logo.png"></a>
+	            </div>
+	        </div>
+	    </div>
+
+	    <div class="container-v-center">
+	        <div id="v-container">
+	            <div id="search-input">
+	                <form action="" id="search-submission">
+	                    <input type="text" ng-model="q" name="q" id="input-query" class="dynamic-input focus" autocomplete="off" autofocus="on" placeholder="">
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+	<footer>
+		<span class="copy">algthm &copy; 2014</span>
+		<ul>
+			<li><a href="/about">about</a></li>
+		</ul>
+	</footer>
+	</script>
+	<script type="text/template" id="results-tpl">
+	<!-- top-bar, contains logo, search bar with current search. -->
+	<div class="std-cntnr top-bar">
+		<div id="page-border"></div>
+	    <!-- lg, contains the algthm logo -->
+	    <div class="lg">
+	        <div class="img">
+	            <a href="/"><img src="_/img/algthm-lg.png" width="40" height="40"></a>
+	        </div>
+	    </div>
+	    <!-- search-bar, contains the search input -->
+	    <div id="header-search" class="mg-cntnr">
+	    </div>
+	</div>
+
+	<!-- context-bar, contains content specific to the current query,
+	    eg, number of results, retrieval time, filter by repositories or
+	    authors. -->
+	<div id="context-bar" class="std-lower-buff"></div>
+
+	<!-- side-fender, contains various site links, eg, trending, top dogs, 
+	    repo submission. Also contains advertisements.. -->
+	<!--
+	<div class="std-cntnr side-fender">
+	    <ul>
+	        <li><a href="#">Javascript <span class="count">201</span></a></li>
+	        <li><a href="#">Ruby <span class="count">26</span></a></li>
+	    </ul>
+
+	    <ul>
+	        <li><a href="#">top repositories</a></li>
+	        <li><a href="#">top authors</a></li>
+	        <li><a href="#">trending</a></li>
+	        <li><a href="#">popular</a></li>
+	    </ul>
+
+	    <ul>
+	        <li><a href="#">submit to index</a></li>
+	        <li><a href="#">advertise</a></li>
+	        <li><a href="#">feedback</a></li>
+	        <li><a href="#">donate</a></li>
+	    </ul>
+	</div>
+	-->
+
+	<!-- results container holds all results to the current query. -->
+	<div class="mg-cntnr" id="results">
+		<div id="loader"></div>
+	</div>
+	</script>
+	<script type="text/template" id="context-bar-tpl">
+	<div class="mg-cntnr">
+        <div class="il-m-cntnr filter-by">
+            <ul>
+                <li><a href="#" class="active">repositories</a></li>
+                <li><a href="#">authors</a></li>
+                <li><a href="#">issues</a></li>
+            </ul>
+        </div>
+        <div class="il-m-cntnr retrieval-stats">{{total_results}} results in {{response_time}} seconds</div>
+    </div>
+   	</script>
+   	<script type="text/template" id="result-tpl">
+   	<!--{{#star}}<div class="star"></div>{{/star}} -->
+    <div class="content">
+        <div class="heading">
+            <a href="{{homeLink}}" target="_blank">{{canonicalName}}</a>
+        </div>
+
+        <div class="home-link"><a href="{{homeLink}}">{{homeLink}}</a></div>
+
+        <div class="readme-snippet blue">
+            <p>{{{readme}}}</p>
+        </div>
+        <div class="home-link"></div>
+    </div>
+    </script>
+    <script type="text/template" id="header-search-tpl">
+    <!-- This template is the search input on the results page.
+    	Will eventually contain the autosuggestions -->
+    <form id="search-form" action="" method="get">
+        <input type="text" id="header-search-input" class="input blue" name="q" value="{{query}}" autofocus="on" autocomplete="off"><button type="submit">
+            <img src="_/img/search.png" width="20" height="20">
+        </button>
+    	<div id="ghosting">{{query}}</div>
+    </form>
+    <div id="autosuggest"></div>
+    </script>
+
+	<!-- Include JS Libraries -->
+	<script src="_/js/vendor/jquery.min.js"></script>
+	<script src="_/js/vendor/underscore.min.js"></script>
+	<script src="_/js/vendor/backbone.min.js"></script>
+	<script src="_/js/vendor/mustache.js"></script>
+
+	<!-- Include Application -->
+	<script src="_/js/boot.js"></script>
+	<script src="_/js/model.js"></script>
+	<script src="_/js/controllers/page.js"></script>
+	<script src="_/js/controllers/search.js"></script>
+	<script src="_/js/controllers/results.js"></script>
+	<script src="_/js/router.js"></script>
+	<script src="_/js/main.js"></script>
+</html>

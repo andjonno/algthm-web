@@ -1,0 +1,516 @@
+/*	ALGTHM
+ *	copyright 2014
+ *	
+ *	home css
+ */
+
+/*	
+--------------------------------------------------------------------------------
+	Helpers Classes
+--------------------------------------------------------------------------------
+*/
+
+.blue {
+    color: #323E47;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Globals
+--------------------------------------------------------------------------------
+*/
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Application Markup
+	Wireframing
+--------------------------------------------------------------------------------
+*/
+
+#toggle-container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	background: #EEEEEE;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Search Markup
+	Wireframing
+--------------------------------------------------------------------------------
+*/
+.container-v-center, .container-v-center-40 {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  margin: auto;
+}
+
+.container-v-center-40 {
+  top: 40%;
+}
+
+#v-container {
+  position: absolute;
+  top: -100px;
+  right: 0;
+  bottom: -100px;
+  left: 0px;
+}
+
+#v-container #search-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
+
+#v-container #search-input #input-query {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: 'Helvetica', Arial, sans-serif;
+  text-align: center;
+  font-size: 8em;
+  background: none;
+  color: #252F37;
+  font-weight: bold;
+  border: none;
+  outline: none;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Search Markup
+	Header & Contents
+--------------------------------------------------------------------------------
+*/
+
+#header-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 50%;
+  left: 0;
+}
+
+#algthm-header {
+  position: absolute;
+  top: -60px;
+  right: 0;
+  left: 0;
+}
+
+#algthm-header #logo {
+  position: relative;
+  display: block;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+}
+
+#search {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Results Markup
+	Containers
+--------------------------------------------------------------------------------
+*/
+
+.std-cntnr, .mg-cntnr, .il-m-cntnr {
+	position: relative;
+	margin: auto;
+}
+.mg-cntnr {
+	margin-left: 100px;
+}
+.il-m-cntnr {
+	display: inline-block;
+	vertical-align: middle;
+}
+.il-b-cntnr {
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.top-bar {
+	height: 74px;
+}
+
+.lg, .side-fender {
+	width: 200px;
+	float: left;
+}
+
+.std-lower-buff {
+	margin-bottom: 20px;
+}
+
+a:link, a:visited, a:hover {
+	color: inherit;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Results Markup
+	top-bar contents
+--------------------------------------------------------------------------------
+*/
+.lg {
+	width: 100px;
+	height: 100%;
+}
+
+.lg .img {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: 44%;
+	left: 30px;
+	margin-top: -16px;
+}
+
+#page-border {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 4px;
+	background: #00AFAA;
+	z-index: 1000;
+}
+
+#header-search {
+	height: 100%;
+	width: 650px;
+}
+
+#header-search #ghosting {
+	/* div lies behind the form input to provide illusion that 
+	input is being filled with a suggestion */
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	background: #FAFAFA;
+	border-radius: 2px;
+	border-left: 3px solid rgba(48, 62, 72, 0.2);
+	padding: 11px 8px;
+	letter-spacing: 0.05em;
+	color: #CCC;
+}
+
+#autosuggest {
+	position: absolute;
+	top: 56px;
+	right: 0;
+	left: 0;
+	background: white;
+	box-shadow: 0px 0px 8px rgba(0,0,0,0.2);
+	z-index: 1000;
+	display: none;
+}
+
+#autosuggest div a {
+	display: block;
+	position: relative;
+	padding: 6px 11px;
+	letter-spacing: 0.05em;
+	color: #AAA;
+}
+
+#autosuggest div a span {
+	color: black;
+}
+
+#autosuggest div a:hover {
+	background: #EEE;
+}
+
+#autosuggest div a.selected {
+	background: #EEE;
+}
+
+#autosuggest div a span {
+	color: black;
+}
+
+#search-form {
+	position: absolute;
+	display: block;
+	top: 50%;
+	right: 0;
+	left: 0;
+	height: 40px;
+	margin-top: -20px;
+}
+
+#search-form .input {
+	position: absolute;
+	top: 0;
+	width: 90%;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	letter-spacing: 0.05em;
+	padding: 0 8px;
+	height: 40px;
+	margin-right: -40px;
+	border: none;
+	outline: none;
+	vertical-align: middle;
+	border-radius: 2px;
+	border-left: 3px solid rgba(48, 62, 72, 0.2);
+	background: none;
+}
+
+#search-form button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 40px;
+	margin: none;
+	padding: none;
+	background: none;
+	border: none;
+	outline: none;
+	vertical-align: middle;
+	z-index: 2;
+}
+
+#search-form button:active {
+	border-bottom: 3px solid #313E48;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Results Markup
+	context-bar contents
+--------------------------------------------------------------------------------
+*/
+#context-bar {
+	clear: left;
+	border-top: 1px solid rgba(48, 62, 72, 0.1);
+	border-bottom: 1px solid rgba(48, 62, 72, 0.1);
+	padding: 6px 0;
+	font-size: 0.75em;
+	background: #F1F1F1;
+	/*box-shadow: 0 0 1px 0 rgba(0,0,0,0.1);*/
+	min-height: 16px;
+ }
+
+#context-bar ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#context-bar ul li {
+	display: inline-block;
+	margin-right: 14px;
+}
+
+#context-bar ul li a.active {
+	font-weight: bold;
+}
+
+#context-bar ul li a {
+	color: #00AFAA;
+	text-decoration: none;
+}
+
+#context-bar ul li a:hover {
+	text-decoration: underline;
+}
+
+#context-bar .retrieval-stats {
+	color: #888;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Results Markup
+	side-fender contents
+--------------------------------------------------------------------------------
+*/
+.side-fender {
+	min-height: 200px;
+}
+
+.side-fender ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	margin: 0 0 20px 20px;
+	font-size: 1em;
+	text-transform: lowercase;
+	font-variant: small-caps;
+}
+
+.side-fender ul li {
+	margin-bottom: 5px;
+	color: #AAA;
+}
+
+.side-fender ul li.active {
+	color: #323E47;
+	font-weight: bold;
+}
+
+.side-fender ul li:hover {
+	color: #323E47;
+}
+
+.side-fender ul li a {
+	display: block;
+	text-decoration: none;
+}
+.side-fender ul li a span.count {
+	font-weight: bold;
+}
+
+/*	
+--------------------------------------------------------------------------------
+	Results Markup
+	results contents
+--------------------------------------------------------------------------------
+*/
+#results {
+	min-height: 200px;
+	padding-bottom: 40px;
+}
+
+#loader {
+	position: absolute;
+	bottom: 20px;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background: url(/_/img/loader.gif) 50% 50% no-repeat;
+}
+
+.result {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.result .content {
+	width: 600px;
+}
+
+.result .content .home-link {
+	font-size: 0.8em;
+	color: #AAA;
+}
+
+.result .star {
+	position: absolute;
+	top: px;
+	left: -22px;
+	width: 16px;
+	height: 16px;
+	background: url(../img/star.png) no-repeat 50% 50%;
+}
+
+.result .heading {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #323E47;
+	line-height: 1em;
+}
+
+.result .heading a {
+	line-height: 0;
+	text-decoration: none;
+}
+
+.result .heading a:hover {
+	color: #00AFAA;
+	border-bottom: 2px solid #00AFAA;
+}
+
+.result .meta {
+	position: relative;
+	float: right;
+}
+
+.result .meta ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	color: #00AFAA;
+}
+
+.result .meta ul li {
+	display: inline-block;
+	font-size: 0.7em;
+	margin: 0;
+	padding: 0 10px;
+	border-right: 1px solid #EEE;
+}
+.result .meta ul li:last-child {
+	border-right: none;
+}
+
+.result .meta ul li span.super {
+	font-weight: bold;
+}
+
+.result .home-link {
+	position: relative;
+	text-align: left;
+	padding-top: 5px;
+}
+
+.result .readme-snippet {
+	position: relative;
+	font-family: "Helvetica", Arial, sans-serif;
+	padding-top: 5px;
+}
+
+.result .readme-snippet p {
+	margin: 0 0 5px 0;
+	font-size: 0.80em;
+	line-height: 1.6em;
+}
+
+.result .readme-snippet p span.hl {
+	font-weight: bold;
+}
+
+.result .readme-snippet p a {
+	font-weight: bold;
+	font-style: italic;
+	font-family: 'Arial', sans-serif;
+}
