@@ -67,12 +67,11 @@
 					new exports.models.result({
 						homeLink: result._source.repository.url,
 						canonicalName: result._source.repository.canonical_name,
-						star: data.max_score == result._score,
+						star: a == 0,
 						readme: result._source.text.readme || "",
 						_highlighting: result._source.text._highlighting,
 
-						common: result._source.repository.languages.common,
-						secondary: result._source.repository.languages.secondary,
+						languages: result._source.repository.languages,
 
 						_score: result._score,
 						_id: result._id,
@@ -126,22 +125,38 @@
 
 		append: function(model) {
 			this.$el.append((new exports.controllers.result({model: model})).render().el);
+
+			// Boot if stats available and if result is starred
+			if (exports.controllers.result_stats && model.get("star")) {
+				this.stats = new exports.controllers.result_stats({model: model});
+				// this.$el.find(".stats").html(this.stats.el);
+			}
 		}
 	});
 
 	/* Result
 	 */
 	exports.controllers.result = Backbone.View.extend({
-		className: "result",
+		className: "result clear",
 		template: function() {
 			return $("#result-tpl").html();
 		},
 		initialize: function() {
-
+			this.$el.attr("id", "_" + this.model.get("_id"));
 		},
 		render: function() {
 			this.$el.html(Mustache.to_html(this.template(), this.model.toJSON()));
 			return this;
+		},
+		events: {
+			"click .expanding": "expand"
+		},
+		expand: function(e) {
+			$(e.currentTarget).find(".label").each(function(d) {
+				// $(this).fadeIn(100);
+				$(this).show().animate({"margin-top": "3px"}, 150);
+			});
+			$(e.currentTarget).animate({top: 0, bottom: 0}, 100).addClass("opened");
 		}
 	});
 
@@ -161,7 +176,7 @@
 		events: {
 			"submit form": "submit",
 			"keyup input[name=q]": "keyup",
-			"blue input[name=q]": "blur",
+			"blur input[name=q]": "blur",
 		},
 		submit: function(e) {
 			var model = this.auto.suggestions.findWhere({_selected: true}),
@@ -181,7 +196,6 @@
 			
 		},
 		blur: function() {
-			$("#header-search-input").blur();
 			this.auto.hide();
 		}
 	});

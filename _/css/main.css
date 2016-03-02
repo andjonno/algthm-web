@@ -29,6 +29,10 @@ body {
   padding: 0;
 }
 
+.clear {
+	clear: both;
+}
+
 /*	
 --------------------------------------------------------------------------------
 	Application Markup
@@ -209,7 +213,7 @@ a:link, a:visited, a:hover {
 
 #header-search {
 	height: 100%;
-	width: 650px;
+	width: 600px;
 }
 
 #header-search #ghosting {
@@ -243,7 +247,7 @@ a:link, a:visited, a:hover {
 #autosuggest div a {
 	display: block;
 	position: relative;
-	padding: 6px 11px;
+	padding: 4px 11px;
 	letter-spacing: 0.05em;
 	color: #AAA;
 }
@@ -436,7 +440,7 @@ a:link, a:visited, a:hover {
 
 .result .star {
 	position: absolute;
-	top: px;
+	top: 2px;
 	left: -22px;
 	width: 16px;
 	height: 16px;
@@ -514,3 +518,188 @@ a:link, a:visited, a:hover {
 	font-style: italic;
 	font-family: 'Arial', sans-serif;
 }
+
+.result .language-bar {
+	position: relative;
+	height: 20px;
+	margin: auto;
+	margin-bottom: 6px;
+}
+
+.result .language-bar.large .expanding {
+	top: 5px;
+	bottom: 5px;
+}
+
+.result .language-bar .expanding {
+	position: absolute;
+	top: 8px;
+	right: 0;
+	bottom: 8px;
+	left: 0;
+	width: 600px;
+	overflow: hidden;
+	border-radius: 2px 0 0 2px;
+}
+
+.result .language-bar .expanding:hover {
+	cursor: pointer;
+}
+
+.result .language-bar .expanding .lang {
+	position: relative;
+	float: left;
+	vertical-align: top;
+	height: 100%;
+	background: #EEE;
+	box-sizing: border-box;
+	border-left: 2px solid white;
+}
+.result .language-bar .expanding .lang:first-child {
+	border-radius: 2px 0 0 2px;
+	border-left: none;
+}
+.result .language-bar .expanding .lang:last-child {
+	border-radius: 0 2px 2px 0;
+}
+
+.result .language-bar .expanding .lang .label {
+	display: none;
+	font-weight: bold;
+	font-size: 0.75em;
+	color: white;
+	position: relative;
+	margin: auto;
+	margin-top: -20px;
+	text-align: center;
+
+	min-width: 20px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding: 0 2px;
+	white-space: nowrap;
+}
+.result .language-bar .expanding .lang .label span {
+	font-weight: lighter;
+}
+
+.result .language-bar .expanding:hover .lang.c, .language-bar .expanding.opened .lang.c {
+	background: #AAA;
+}
+.result .language-bar .expanding:hover .lang.c1, .language-bar .expanding.opened .lang.c1 {
+	background: #FF0064;
+}
+.result .language-bar .expanding:hover .lang.c2, .language-bar .expanding.opened .lang.c2 {
+	background: #00CAFF;
+}
+.result .language-bar .expanding:hover .lang.c3, .language-bar .expanding.opened .lang.c3 {
+	background: #009A2C;
+}
+.result .language-bar .expanding:hover .lang.c4, .language-bar .expanding.opened .lang.c4 {
+	background: #FF9900;
+}
+.result .language-bar .expanding:hover .lang.c5, .language-bar .expanding.opened .lang.c5 {
+	background: #330099;
+}
+.result .language-bar .expanding:hover .lang.c6, .language-bar .expanding.opened .lang.c6 {
+	background: #000;
+}
+
+.result .stats {
+	min-height: 100px;
+}
+
+.result .stats .table .row {
+	padding: 4px 0;
+	border-bottom: 1px solid #F5F5F5;
+	box-sizing: border-box;
+	font-size: 0.8em;
+}
+
+.result .stats .table .row:hover {
+	background: #F5F5F5;
+}
+
+.result .stats .table .row > div {
+	position: relative;
+	display: inline-block;
+}
+
+.result .stats .table .row .title {
+	width: 50%;
+	color: #666;
+	text-transform: capitalize;
+}
+
+.result .stats .table .row .value {
+	width: 50%;
+	text-align: right;
+	font-weight: bold;
+}
+
+.result .contributors {
+	margin-top: 10px;
+	height: 40px;
+}
+
+.result .contributors ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.result .contributors ul li {
+	position: relative;
+	display: inline-block;
+	margin: 0;
+	height: 40px;
+	width: 40px;
+	box-sizing: border-box;
+	z-index: 2;
+	float: left;
+}
+
+.result .contributors ul li .rollover {
+	position: absolute;
+	font-size: 0.6em;
+	background: #333;
+	color: white;
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+	padding: 4px;
+	left: 0;
+	top: -22px;
+	white-space: nowrap;
+	display: block;
+
+	transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	-webkit-transition: all 0.1s linear;
+	opacity: 0;
+	z-index: 1;
+
+}
+.result .contributors ul li:hover .rollover {
+	opacity: 0.9;
+}
+
+.result .contributors ul li:hover .rollover .pointer {
+	position: absolute;
+	bottom: -3px;
+	left: 18px;
+	background: #333;
+	height: 6px;
+	width: 6px;
+
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+

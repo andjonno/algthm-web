@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta charset="utf-8">
-		<title>Algthm / Source Discovery</title>
+		<title>Algthm &bull; Source Discovery</title>
         
         <meta name="description" content="Algthm allows developer to find the best possible open source libraries for their projects.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -115,7 +115,7 @@
     </div>
    	</script>
    	<script type="text/template" id="result-tpl">
-   	<!--{{#star}}<div class="star"></div>{{/star}} -->
+   	{{#star}}<div class="star"></div>{{/star}}
     <div class="content">
         <div class="heading">
             <a href="{{homeLink}}" target="_blank">{{canonicalName}}</a>
@@ -126,14 +126,37 @@
         <div class="readme-snippet blue">
             <p>{{{readme}}}</p>
         </div>
-        <div class="home-link"></div>
+
+        <div class="language-bar {{#star}}large{{/star}}">
+        	<div class="expanding">
+        		{{#languages}}
+        		<div class="lang {{colour}}" title="{{language}} {{percentage}}%" style="width: {{percentage}}%;">
+        			<div class="label">{{&label}}</div>
+        		</div>
+        		{{/languages}}
+        	</div>
+        </div>
+
+        {{#star}}
+        <div class="stats"></div>
+        <div class="contributors">
+        	<ul>
+        	</ul>
+        </div>
+        {{/star}}
+
     </div>
     </script>
+    <script type="text/template" id="contributor-tpl">
+	<li style="background: url(https://gravatar.com/avatar/{{hash}}?s=40) 50% 50% no-repeat">
+		<div class="rollover">{{name}} &lt;{{email}}&gt;<div class="pointer"></div></div>
+	</li>
+	</script>
     <script type="text/template" id="header-search-tpl">
     <!-- This template is the search input on the results page.
     	Will eventually contain the autosuggestions -->
     <form id="search-form" action="" method="get">
-        <input type="text" id="header-search-input" class="input blue" name="q" value="{{query}}" autofocus="on" autocomplete="off"><button type="submit">
+        <input type="text" id="header-search-input" class="input blue" name="q" value="{{query}}" autofocus="on" autocomplete="off" tabindex="1"><button type="submit">
             <img src="_/img/search.png" width="20" height="20">
         </button>
     	<div id="ghosting">{{query}}</div>
@@ -148,11 +171,13 @@
 	<script src="_/js/vendor/mustache.js"></script>
 
 	<!-- Include Application -->
+	<script src="_/js/vendor/md5.js"></script>
 	<script src="_/js/boot.js"></script>
 	<script src="_/js/model.js"></script>
 	<script src="_/js/controllers/page.js"></script>
 	<script src="_/js/controllers/search.js"></script>
 	<script src="_/js/controllers/results.js"></script>
+	<script src="_/js/controllers/result-stats.js"></script>
 	<script src="_/js/router.js"></script>
 	<script src="_/js/main.js"></script>
 </html>

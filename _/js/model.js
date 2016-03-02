@@ -28,8 +28,7 @@
 			star: false,
 			readme: "",
 			_highlighting: {},
-			common: {},
-			secondary: {},
+			languages: {},
 
 			_score: 0.0,
 			_id: "",
@@ -41,6 +40,44 @@
 			var readme = this.get("readme");
 			if (readme)
 				this.highlighting();
+
+			var languages = this.get("languages"),
+				filtered = [],
+				// Any lang less than 5% percent should be put in the "other" bin.
+				other = {
+					language: "Other",
+					label: "Other",
+					percentage: 0.0,
+					colour: "",
+				},
+				lang,
+				colours = exports.util.shuffle(['c1', 'c2', 'c3', 'c4', 'c5', 'c6']);
+
+			// round percentage and determine whether language has enough share 
+			// of percentage to be solo or put in the "other" bin.
+			for (var a = 0; a < languages.length; a++) {
+				// ignore anything with 1, rounding error in es.
+				/*if (languages[a].percentage == 1) {
+				} else */if (languages[a].percentage > 0.1) {
+					languages[a].percentage = Math.round(languages[a].percentage * 100);
+					languages[a].label = languages[a].language + " <span>" + languages[a].percentage + "%</span>";
+					filtered.push(languages[a])
+				} else {
+					other.percentage += languages[a].percentage;
+				}
+			}
+			if (other.percentage > 0) {
+				other.percentage = Math.round(other.percentage * 100);
+				filtered.push(other);
+			}
+			// Tag with colour
+			for (var l = 0; l < filtered.length; l++) {
+				if (filtered[l].language != "other")
+					filtered[l].colour = colours[l % colours.length];
+				else
+					filtered[l].colour = "c";
+			}
+			this.set({languages: filtered});
 		},
 
 		highlighting: function() {
@@ -120,12 +157,42 @@
 		select: function(index) {
 			if (index > this.length - 1)
 				return;
-			console.log(index, this.length)
 			for (var a = 0; a < this.length; a++)
 				this.models[a].set({_selected: false});
 			if (0 <= index && index < this.length)
 				this.models[index].select();
 		}
+	});
+
+	exports.models.metric = Backbone.Model.extend({
+		defaults: {
+			_id: "",
+			activity: 0,
+			additions: 0,
+			deletions: 0,
+			commit: "",
+			commit_count: 1,
+			timestamp: "2008-09-08 21:54:31"
+		}
+	});
+
+	exports.collections.metrics = Backbone.Collection.extend({
+		model: exports.models.metric
+	});
+
+	exports.models.contributor = Backbone.Model.extend({
+		defaults: {
+			name: "",
+			email: "",
+			hash: "",
+		},
+		initialize: function() {
+			this.set({hash: md5(this.get("email"))});
+		}
+	});
+
+	exports.collections.contributors = Backbone.Collection.extend({
+		model: exports.models.contributor
 	});
 
 })(jQuery, Backbone, window);
