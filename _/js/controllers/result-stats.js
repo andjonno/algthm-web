@@ -1,4 +1,4 @@
-/* Result stats controlls the display of data in a result item view.
+/* Result stats controls the display of data in a result item view.
  */
 
 (function($, Backbone, Mustache, _, exports) {
